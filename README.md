@@ -11,6 +11,14 @@
 
 ---
 
+##  User Guide
+
+For complete instructions, examples, result interpretation, model feedback, and troubleshooting:
+
+### [Open the NOVA User Guide](USER_GUIDE.md)
+
+
+
 # Executive Summary
 
 Mortgage lending represents one of the most critical financial decision-making processes within the banking industry. Evaluating a mortgage application requires the simultaneous analysis of numerous financial and demographic factors while balancing lending risk with responsible credit allocation.
