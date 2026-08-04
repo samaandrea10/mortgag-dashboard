@@ -1,4 +1,4 @@
-# 🏦 NOVA Mortgage Intelligence
+#  NOVA Mortgage Intelligence
 
 ## Professional User Guide
 
@@ -29,7 +29,7 @@ The system enables users to:
 
 ---
 
-# 🌐 Access the Application
+#  Access the Application
 
 ## Live Application
 
@@ -41,7 +41,7 @@ The first opening may take slightly longer because Streamlit Community Cloud may
 
 ---
 
-# 🚀 Quick Start
+#  Quick Start
 
 A complete mortgage analysis can be performed in five steps:
 
@@ -53,7 +53,7 @@ A complete mortgage analysis can be performed in five steps:
 
 ---
 
-# 🧭 Application Navigation
+#  Application Navigation
 
 The NOVA home page provides access to three central analytical areas.
 
@@ -73,7 +73,7 @@ Additional pages become available after an application is analyzed:
 
 ---
 
-# 📝 Mortgage Analysis
+#  Mortgage Analysis
 
 ## Step 1 — Open the Analysis Form
 
@@ -90,7 +90,7 @@ The application form contains two sections:
 
 ---
 
-# 💰 Financial Information
+#  Financial Information
 
 ## Loan Amount
 
@@ -210,7 +210,7 @@ A high DTI may indicate reduced repayment capacity.
 
 ---
 
-# 👤 Applicant Information
+#  Applicant Information
 
 The application accepts the following applicant attributes:
 
@@ -225,7 +225,7 @@ They are also examined through fairness analysis to evaluate whether the model b
 
 ---
 
-# ✅ Demonstration 1 — Stronger Financial Profile
+#  Demonstration 1 — Stronger Financial Profile
 
 Use the following values to demonstrate a profile that is generally expected to show stronger approval potential:
 
@@ -253,7 +253,7 @@ The exact result may vary according to the trained Machine Learning model.
 
 ---
 
-# ⚠️ Demonstration 2 — Elevated Financial Risk
+#  Demonstration 2 — Elevated Financial Risk
 
 Use the following values to demonstrate a high-risk profile:
 
@@ -287,7 +287,7 @@ This profile contains several strong risk signals:
 
 ---
 
-# 📊 Understanding the Results Dashboard
+#  Understanding the Results Dashboard
 
 After submitting the form, NOVA opens a complete results dashboard.
 
@@ -349,7 +349,7 @@ The risk level summarizes the level of lending concern associated with the curre
 
 ---
 
-# ❤️ NOVA Financial Health Score
+#  NOVA Financial Health Score
 
 The Financial Health Score summarizes the overall financial condition of the mortgage profile.
 
@@ -379,7 +379,7 @@ The Financial Health Score is a complementary analytical indicator. It is not an
 
 ---
 
-# 🧾 Mortgage Summary
+#  Mortgage Summary
 
 ## Estimated Monthly Payment
 
@@ -432,7 +432,7 @@ General interpretation:
 
 ---
 
-# 🔍 Detailed Analysis
+#  Detailed Analysis
 
 The Detailed Analysis page expands the prediction into a more interpretable financial assessment.
 
@@ -450,7 +450,7 @@ The purpose is to explain the model output rather than present only a binary dec
 
 ---
 
-# 🧮 Mortgage Simulator
+#  Mortgage Simulator
 
 The simulator allows the user to explore how changes in the mortgage profile may affect affordability.
 
@@ -473,7 +473,7 @@ Simulation outputs are analytical estimates and do not guarantee a different len
 
 ---
 
-# 🤖 Financial Advisor
+#  Financial Advisor
 
 The advisor page provides structured, banking-oriented observations based on the application profile.
 
@@ -490,7 +490,7 @@ These recommendations are educational and analytical.
 
 ---
 
-# 📈 Model Performance
+#  Model Performance
 
 The Model Performance page presents the scientific evaluation of the final model.
 
@@ -588,7 +588,7 @@ It does not prove that a variable directly causes approval or denial.
 
 ---
 
-# 🔁 Model Feedback
+#  Model Feedback
 
 The Model Feedback page supports a controlled human-in-the-loop learning workflow.
 
@@ -658,7 +658,7 @@ The feedback dataset can also be downloaded as a CSV file.
 
 ---
 
-# 🧠 Controlled Model Retraining
+#  Controlled Model Retraining
 
 NOVA does not automatically retrain the production model after every user submission.
 
@@ -692,7 +692,7 @@ A new production model should be deployed only after formal evaluation.
 
 ---
 
-# 📄 PDF Report
+#  PDF Report
 
 The application can generate a structured PDF report.
 
@@ -713,7 +713,7 @@ The PDF provides a convenient summary for academic demonstrations, documentation
 
 ---
 
-# 🛡️ Responsible Use
+#  Responsible Use
 
 NOVA should be used responsibly.
 
@@ -731,7 +731,7 @@ Human review remains essential.
 
 ---
 
-# ⚠️ Important Limitations
+#  Important Limitations
 
 - Historical HMDA data may not fully represent future lending conditions.
 - Model probability does not guarantee an outcome.
@@ -744,7 +744,7 @@ Human review remains essential.
 
 ---
 
-# 🛠️ Troubleshooting
+#  Troubleshooting
 
 ## The Application Opens Slowly
 
@@ -811,7 +811,7 @@ For a production application, feedback should be stored in:
 
 ---
 
-# 💻 Local Installation
+#  Local Installation
 
 ## 1. Clone the Repository
 
@@ -921,7 +921,7 @@ The project demonstrates the integration of:
 
 ---
 
-# 👩‍💻 Author
+#  Author
 
 **Sama Andrea**
 
@@ -931,7 +931,7 @@ Final Capstone Project
 
 ---
 
-# 📌 Final Notice
+#  Final Notice
 
 NOVA Mortgage Intelligence is an academic analytical platform.
 
