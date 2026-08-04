@@ -38,16 +38,17 @@ def show_home() -> None:
     st.markdown(
         """
         <p style="
-            max-width: 780px;
+            max-width: 820px;
             margin: 0 auto;
             text-align: center;
             color: #b9c4d4;
             font-size: 18px;
             line-height: 1.8;
         ">
-            NOVA is a machine-learning mortgage analytics platform that
-            estimates approval probability, decline risk, and the predicted
-            outcome of a mortgage application.
+            NOVA is a machine-learning mortgage analytics platform
+            that estimates approval probability, evaluates lending
+            risk, presents model-performance evidence, and supports
+            controlled feedback learning.
         </p>
         """,
         unsafe_allow_html=True,
@@ -55,7 +56,9 @@ def show_home() -> None:
 
     st.write("")
 
-    left_space, logo_column, right_space = st.columns([2, 1, 2])
+    left_space, logo_column, right_space = st.columns(
+        [2, 1, 2]
+    )
 
     with logo_column:
         st.image(
@@ -65,14 +68,24 @@ def show_home() -> None:
 
     st.divider()
 
-    left_space, main_column, right_space = st.columns([1, 2.2, 1])
+    (
+        analysis_column,
+        performance_column,
+        feedback_column,
+    ) = st.columns(
+        3,
+        gap="large",
+    )
 
-    with main_column:
+    with analysis_column:
         with st.container(border=True):
             st.markdown(
                 """
-                <h2 style="text-align:center; margin-bottom:8px;">
-                    Mortgage Application Analysis
+                <h2 style="
+                    text-align:center;
+                    margin-bottom:8px;
+                ">
+                    Mortgage Analysis
                 </h2>
                 """,
                 unsafe_allow_html=True,
@@ -84,27 +97,106 @@ def show_home() -> None:
                     text-align:center;
                     color:#b9c4d4;
                     line-height:1.7;
+                    min-height:145px;
                     margin-bottom:22px;
                 ">
-                    Enter the applicant and loan information to generate
-                    a complete predictive analysis, including approval
-                    probability, decline risk, and estimated decision.
+                    Enter applicant and loan information to generate
+                    approval probability, decline risk, affordability
+                    indicators, and the estimated mortgage outcome.
                 </p>
                 """,
                 unsafe_allow_html=True,
             )
 
             if st.button(
-                "Analyze Mortgage Application",
+                "Analyze Application",
                 key="home_analysis_button",
                 width="stretch",
                 type="primary",
             ):
                 set_page("approval")
 
+    with performance_column:
+        with st.container(border=True):
+            st.markdown(
+                """
+                <h2 style="
+                    text-align:center;
+                    margin-bottom:8px;
+                ">
+                    Model Performance
+                </h2>
+                """,
+                unsafe_allow_html=True,
+            )
+
+            st.markdown(
+                """
+                <p style="
+                    text-align:center;
+                    color:#b9c4d4;
+                    line-height:1.7;
+                    min-height:145px;
+                    margin-bottom:22px;
+                ">
+                    Review Accuracy, Precision, Recall, F1, ROC-AUC,
+                    model comparisons, confusion matrix, validation
+                    evidence, and feature importance.
+                </p>
+                """,
+                unsafe_allow_html=True,
+            )
+
+            if st.button(
+                "View Model Performance",
+                key="home_model_performance_button",
+                width="stretch",
+            ):
+                set_page("model_performance")
+
+    with feedback_column:
+        with st.container(border=True):
+            st.markdown(
+                """
+                <h2 style="
+                    text-align:center;
+                    margin-bottom:8px;
+                ">
+                    Model Feedback
+                </h2>
+                """,
+                unsafe_allow_html=True,
+            )
+
+            st.markdown(
+                """
+                <p style="
+                    text-align:center;
+                    color:#b9c4d4;
+                    line-height:1.7;
+                    min-height:145px;
+                    margin-bottom:22px;
+                ">
+                    Record verified real-world outcomes, monitor
+                    prediction errors, and prepare observations for
+                    controlled future model retraining.
+                </p>
+                """,
+                unsafe_allow_html=True,
+            )
+
+            if st.button(
+                "Open Feedback Center",
+                key="home_model_feedback_button",
+                width="stretch",
+            ):
+                set_page("model_feedback")
+
     st.write("")
 
-    metric_left, metric_center, metric_right = st.columns(3)
+    metric_left, metric_center, metric_right = st.columns(
+        3
+    )
 
     with metric_left:
         st.metric(
@@ -130,6 +222,7 @@ def show_home() -> None:
     st.divider()
 
     st.caption(
-        "NOVA provides predictive analytics for educational and analytical "
-        "purposes. It does not replace an official lender decision."
+        "NOVA provides predictive analytics for educational and "
+        "analytical purposes. It does not replace an official lender "
+        "decision."
     )

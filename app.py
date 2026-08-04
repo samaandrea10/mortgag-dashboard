@@ -1,9 +1,11 @@
-import streamlit  as st
+import streamlit as st
 
 from pages.approval import show_approval
 from pages.advisor import show_ai_advisor
 from pages.detailed_analysis import show_detailed_analysis
 from pages.home import show_home
+from pages.model_feedback import show_model_feedback
+from pages.model_performance import show_model_performance
 from pages.results import show_results
 from pages.simulator import show_simulator
 from utils.session import get_page, initialize_session
@@ -22,6 +24,7 @@ def main() -> None:
     """
     Initialize and display the NOVA application.
     """
+
     initialize_session()
     load_styles()
 
@@ -35,6 +38,12 @@ def main() -> None:
 
     elif current_page == "results":
         show_results()
+
+    elif current_page == "model_performance":
+        show_model_performance()
+
+    elif current_page == "model_feedback":
+        show_model_feedback()
 
     elif current_page == "detailed_analysis":
         show_detailed_analysis()
