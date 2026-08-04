@@ -1,7 +1,9 @@
 import streamlit as st
 
+from pages.about import show_about
 from pages.approval import show_approval
 from pages.advisor import show_ai_advisor
+from pages.data_insights import show_data_insights
 from pages.detailed_analysis import show_detailed_analysis
 from pages.home import show_home
 from pages.model_feedback import show_model_feedback
@@ -14,7 +16,6 @@ from utils.styles import load_styles
 
 st.set_page_config(
     page_title="NOVA Mortgage Intelligence",
-    page_icon="🏦",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
@@ -42,6 +43,9 @@ def main() -> None:
     elif current_page == "model_performance":
         show_model_performance()
 
+    elif current_page == "data_insights":
+        show_data_insights()
+
     elif current_page == "model_feedback":
         show_model_feedback()
 
@@ -53,6 +57,9 @@ def main() -> None:
 
     elif current_page == "advisor":
         show_ai_advisor()
+
+    elif current_page == "about":
+        show_about()
 
     else:
         st.session_state.page = "home"

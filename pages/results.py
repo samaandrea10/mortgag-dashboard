@@ -277,12 +277,15 @@ def show_financial_health_score(
     Streamlit components.
     """
     score = int(financial_health["score"])
+
     classification = str(
         financial_health["classification"]
     )
+
     risk_band = str(
         financial_health["risk_band"]
     )
+
     summary = str(
         financial_health["summary"]
     )
@@ -321,12 +324,14 @@ def show_financial_health_score(
                 f"**{risk_band}**\n\n"
                 f"{summary}"
             )
+
         elif score >= 60:
             st.warning(
                 f"### {classification}\n\n"
                 f"**{risk_band}**\n\n"
                 f"{summary}"
             )
+
         else:
             st.error(
                 f"### {classification}\n\n"
@@ -336,9 +341,15 @@ def show_financial_health_score(
 
     st.markdown("#### Score Components")
 
-    component_scores = financial_health["component_scores"]
+    component_scores = financial_health[
+        "component_scores"
+    ]
 
-    first_row_left, first_row_middle, first_row_right = st.columns(
+    (
+        first_row_left,
+        first_row_middle,
+        first_row_right,
+    ) = st.columns(
         3,
         gap="medium",
     )
@@ -356,7 +367,10 @@ def show_financial_health_score(
         st.progress(
             max(
                 0.0,
-                min(1.0, approval_score / 100),
+                min(
+                    1.0,
+                    approval_score / 100,
+                ),
             )
         )
 
@@ -373,7 +387,10 @@ def show_financial_health_score(
         st.progress(
             max(
                 0.0,
-                min(1.0, debt_score / 100),
+                min(
+                    1.0,
+                    debt_score / 100,
+                ),
             )
         )
 
@@ -390,7 +407,10 @@ def show_financial_health_score(
         st.progress(
             max(
                 0.0,
-                min(1.0, equity_score / 100),
+                min(
+                    1.0,
+                    equity_score / 100,
+                ),
             )
         )
 
@@ -401,7 +421,9 @@ def show_financial_health_score(
 
     with second_row_left:
         affordability_score = float(
-            component_scores["Mortgage Affordability"]
+            component_scores[
+                "Mortgage Affordability"
+            ]
         )
 
         st.metric(
@@ -412,7 +434,10 @@ def show_financial_health_score(
         st.progress(
             max(
                 0.0,
-                min(1.0, affordability_score / 100),
+                min(
+                    1.0,
+                    affordability_score / 100,
+                ),
             )
         )
 
@@ -429,7 +454,10 @@ def show_financial_health_score(
         st.progress(
             max(
                 0.0,
-                min(1.0, income_score / 100),
+                min(
+                    1.0,
+                    income_score / 100,
+                ),
             )
         )
 
@@ -506,14 +534,19 @@ def show_results() -> None:
 
     with top_left:
         st.markdown(
-            "<p class='nova-kicker'>NOVA MORTGAGE INTELLIGENCE</p>",
+            (
+                "<p class='nova-kicker'>"
+                "NOVA MORTGAGE INTELLIGENCE"
+                "</p>"
+            ),
             unsafe_allow_html=True,
         )
+
         st.title("Mortgage Analysis Results")
 
     with home_column:
         if st.button(
-            "🏠 Home",
+            "Home",
             key="results_home_top",
             width="stretch",
         ):
@@ -521,7 +554,7 @@ def show_results() -> None:
 
     with new_analysis_column:
         if st.button(
-            "🔄 New Analysis",
+            "New Analysis",
             key="results_new_analysis_top",
             type="primary",
             width="stretch",
@@ -545,13 +578,14 @@ def show_results() -> None:
 
     if prediction == 1:
         st.success(
-            f"### ✓ {result['predicted_decision']}\n\n"
+            f"### {result['predicted_decision']}\n\n"
             "The applicant's current profile demonstrates a "
             "favorable mortgage approval outlook."
         )
+
     else:
         st.error(
-            f"### ⚠ {result['predicted_decision']}\n\n"
+            f"### {result['predicted_decision']}\n\n"
             "The applicant's current profile contains factors that "
             "may reduce the likelihood of mortgage approval."
         )
@@ -827,6 +861,7 @@ def show_results() -> None:
                 type="primary",
                 width="stretch",
             )
+
         else:
             st.button(
                 "Report Unavailable",
@@ -838,5 +873,42 @@ def show_results() -> None:
 
     st.caption(
         "Review the detailed analysis, receive personalized guidance, "
-        "test alternative scenarios, or download the professional NOVA report."
+        "test alternative scenarios, or download the professional NOVA "
+        "report."
+    )
+
+    st.divider()
+
+    # ---------------------------------------------------------
+    # Verified outcome feedback
+    # ---------------------------------------------------------
+
+    feedback_text_column, feedback_button_column = st.columns(
+        [3, 1.25],
+        gap="large",
+        vertical_alignment="center",
+    )
+
+    with feedback_text_column:
+        st.subheader("Verified Outcome Feedback")
+
+        st.write(
+            "When the actual lending decision becomes available, "
+            "submit the verified outcome to monitor prediction quality "
+            "and support controlled future model retraining."
+        )
+
+    with feedback_button_column:
+        if st.button(
+            "Submit Verified Outcome",
+            key="results_submit_verified_outcome",
+            width="stretch",
+        ):
+            set_page(
+                "model_feedback"
+            )
+
+    st.caption(
+        "Only verified real-world outcomes should be submitted. "
+        "Feedback does not retrain the production model immediately."
     )
