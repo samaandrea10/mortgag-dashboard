@@ -7,8 +7,7 @@
 
 ## Live Application
 
-### https://mortgage-dashboard-sama.streamlit.app/
-
+https://mortgage-dashboard-sama.streamlit.app/
 ---
 
 ##  User Guide
