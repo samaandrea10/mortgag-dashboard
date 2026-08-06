@@ -25,9 +25,10 @@ Thumbs.db
 
 # Cache
 .cache/
-
-# Python cache
 .pytest_cache/
 
-# Streamlit cache
+# Streamlit secrets
 .streamlit/secrets.toml
+
+# Local feedback data
+feedback_data.csv
