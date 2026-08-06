@@ -1,4 +1,4 @@
-#  NOVA Mortgage Intelligence
+# NOVA Mortgage Intelligence
 
 ## Professional User Guide
 
@@ -11,7 +11,7 @@
 
 ## Welcome to NOVA
 
-**NOVA Mortgage Intelligence** is an interactive Machine Learning platform for mortgage application analysis.
+**NOVA Mortgage Intelligence** is an interactive Machine Learning platform developed for mortgage application analysis.
 
 The system enables users to:
 
@@ -20,16 +20,18 @@ The system enables users to:
 - View approval and decline probabilities.
 - Evaluate affordability and lending-risk indicators.
 - Review the final model's performance.
+- Explore patterns within the processed HMDA dataset.
 - Examine the variables that most influence predictions.
 - Record verified actual outcomes for controlled model monitoring.
-- Generate a downloadable PDF analysis report.
+- Generate a downloadable professional PDF report.
+- Review the system architecture and academic contribution.
 
 > **Important:** NOVA is an academic decision-support system.  
-> It does not replace formal lender underwriting, legal advice, or an official credit decision.
+> It does not replace formal lender underwriting, legal advice, professional financial advice, or an official credit decision.
 
 ---
 
-#  Access the Application
+# Access the Application
 
 ## Live Application
 
@@ -41,7 +43,7 @@ The first opening may take slightly longer because Streamlit Community Cloud may
 
 ---
 
-#  Quick Start
+# Quick Start
 
 A complete mortgage analysis can be performed in five steps:
 
@@ -53,27 +55,30 @@ A complete mortgage analysis can be performed in five steps:
 
 ---
 
-#  Application Navigation
+# Application Navigation
 
-The NOVA home page provides access to three central analytical areas.
+The NOVA home page provides access to five central areas.
 
 | Section | Purpose |
 |---|---|
 | **Mortgage Analysis** | Enter a new mortgage application and receive a complete prediction. |
 | **Model Performance** | Review the scientific evaluation of the final Machine Learning model. |
-| **Model Feedback** | Record a verified real-world outcome for future monitoring and controlled retraining. |
+| **Data Insights** | Explore historical HMDA patterns through interactive visualizations. |
+| **Model Feedback** | Record a verified real-world outcome for monitoring and controlled retraining. |
+| **About NOVA** | Review the project objective, architecture, technologies, and academic contribution. |
 
-Additional pages become available after an application is analyzed:
+Additional pages become available after a mortgage application is analyzed:
 
 - Results Dashboard
 - Detailed Analysis
 - Mortgage Simulator
-- AI-Oriented Financial Advisor
-- PDF Report
+- Financial Advisor
+- Verified Outcome Feedback
+- Professional PDF Report
 
 ---
 
-#  Mortgage Analysis
+# Mortgage Analysis
 
 ## Step 1 — Open the Analysis Form
 
@@ -90,7 +95,7 @@ The application form contains two sections:
 
 ---
 
-#  Financial Information
+# Financial Information
 
 ## Loan Amount
 
@@ -210,7 +215,7 @@ A high DTI may indicate reduced repayment capacity.
 
 ---
 
-#  Applicant Information
+# Applicant Information
 
 The application accepts the following applicant attributes:
 
@@ -225,7 +230,7 @@ They are also examined through fairness analysis to evaluate whether the model b
 
 ---
 
-#  Demonstration 1 — Stronger Financial Profile
+# Demonstration 1 — Stronger Financial Profile
 
 Use the following values to demonstrate a profile that is generally expected to show stronger approval potential:
 
@@ -253,7 +258,7 @@ The exact result may vary according to the trained Machine Learning model.
 
 ---
 
-#  Demonstration 2 — Elevated Financial Risk
+# Demonstration 2 — Elevated Financial Risk
 
 Use the following values to demonstrate a high-risk profile:
 
@@ -287,7 +292,7 @@ This profile contains several strong risk signals:
 
 ---
 
-#  Understanding the Results Dashboard
+# Understanding the Results Dashboard
 
 After submitting the form, NOVA opens a complete results dashboard.
 
@@ -349,7 +354,7 @@ The risk level summarizes the level of lending concern associated with the curre
 
 ---
 
-#  NOVA Financial Health Score
+# NOVA Financial Health Score
 
 The Financial Health Score summarizes the overall financial condition of the mortgage profile.
 
@@ -379,7 +384,7 @@ The Financial Health Score is a complementary analytical indicator. It is not an
 
 ---
 
-#  Mortgage Summary
+# Mortgage Summary
 
 ## Estimated Monthly Payment
 
@@ -432,7 +437,7 @@ General interpretation:
 
 ---
 
-#  Detailed Analysis
+# Detailed Analysis
 
 The Detailed Analysis page expands the prediction into a more interpretable financial assessment.
 
@@ -450,7 +455,7 @@ The purpose is to explain the model output rather than present only a binary dec
 
 ---
 
-#  Mortgage Simulator
+# Mortgage Simulator
 
 The simulator allows the user to explore how changes in the mortgage profile may affect affordability.
 
@@ -473,7 +478,7 @@ Simulation outputs are analytical estimates and do not guarantee a different len
 
 ---
 
-#  Financial Advisor
+# Financial Advisor
 
 The advisor page provides structured, banking-oriented observations based on the application profile.
 
@@ -490,7 +495,7 @@ These recommendations are educational and analytical.
 
 ---
 
-#  Model Performance
+# Model Performance
 
 The Model Performance page presents the scientific evaluation of the final model.
 
@@ -526,9 +531,9 @@ A high F1-Score indicates that the model maintains a strong balance between iden
 
 ## ROC-AUC
 
-Measures the ability of the model to distinguish between approved and denied applications across different probability thresholds.
+ROC-AUC measures the ability of the model to distinguish between approved and denied applications across different probability thresholds.
 
-Interpretation:
+General interpretation:
 
 | ROC-AUC | General Interpretation |
 |---:|---|
@@ -551,7 +556,7 @@ The confusion matrix presents:
 | False Approved | Denied case predicted as approved |
 | False Denied | Approved case predicted as denied |
 
-This visualization provides a clearer understanding of the model's errors.
+This visualization provides a clearer understanding of the model's classification errors.
 
 ---
 
@@ -588,7 +593,32 @@ It does not prove that a variable directly causes approval or denial.
 
 ---
 
-#  Model Feedback
+# Data Insights
+
+The Data Insights page provides interactive exploratory analysis of the processed HMDA dataset.
+
+The page may include:
+
+- Total number of mortgage applications.
+- Historical approval and denial distribution.
+- Approval rates by applicant age.
+- Approval rates by applicant sex.
+- Approval rates by applicant race.
+- Financial-variable distributions.
+- Income distribution.
+- Loan amount distribution.
+- Interest rate distribution.
+- LTV distribution.
+- DTI distribution.
+- Aggregated approval summaries.
+
+The dashboard also includes interactive filters that allow users to examine selected application groups.
+
+The displayed patterns are descriptive and should not be interpreted as proof of causality or discrimination.
+
+---
+
+# Model Feedback
 
 The Model Feedback page supports a controlled human-in-the-loop learning workflow.
 
@@ -615,14 +645,15 @@ Actual Outcome: Denied
 ## How to Submit Feedback
 
 1. Complete a mortgage analysis.
-2. Open **Model Feedback**.
-3. Review the current prediction.
-4. Select the verified actual outcome:
+2. Review the Results Dashboard.
+3. Select **Submit Verified Outcome**, or open **Model Feedback** from the home page.
+4. Review the current model prediction.
+5. Select the verified actual outcome:
    - Approved
    - Denied
-5. Confirm that the outcome is verified.
-6. Add an optional reviewer note.
-7. Select **Submit Verified Feedback**.
+6. Confirm that the outcome is verified.
+7. Add an optional reviewer note.
+8. Select **Submit Verified Feedback**.
 
 ---
 
@@ -658,7 +689,7 @@ The feedback dataset can also be downloaded as a CSV file.
 
 ---
 
-#  Controlled Model Retraining
+# Controlled Model Retraining
 
 NOVA does not automatically retrain the production model after every user submission.
 
@@ -682,17 +713,38 @@ Deploy Only If Performance Improves
 
 This approach helps reduce:
 
-- Incorrect labels
-- Data poisoning
-- Unstable retraining
-- Model degradation
-- Accidental replacement of a stronger model
+- Incorrect labels.
+- Data poisoning.
+- Unstable retraining.
+- Model degradation.
+- Accidental replacement of a stronger model.
 
 A new production model should be deployed only after formal evaluation.
 
 ---
 
-#  PDF Report
+# About NOVA
+
+The About NOVA page presents the academic and technical context of the project.
+
+It includes:
+
+- Project objective.
+- HMDA dataset description.
+- Final model summary.
+- Machine Learning lifecycle.
+- Platform architecture.
+- Core system capabilities.
+- Technology stack.
+- Academic contribution.
+- Responsible-use principles.
+- Live application and GitHub links.
+
+This page provides a concise overview of NOVA as an end-to-end Data Science and Machine Learning system.
+
+---
+
+# PDF Report
 
 The application can generate a structured PDF report.
 
@@ -713,7 +765,7 @@ The PDF provides a convenient summary for academic demonstrations, documentation
 
 ---
 
-#  Responsible Use
+# Responsible Use
 
 NOVA should be used responsibly.
 
@@ -731,7 +783,7 @@ Human review remains essential.
 
 ---
 
-#  Important Limitations
+# Important Limitations
 
 - Historical HMDA data may not fully represent future lending conditions.
 - Model probability does not guarantee an outcome.
@@ -744,7 +796,7 @@ Human review remains essential.
 
 ---
 
-#  Troubleshooting
+# Troubleshooting
 
 ## The Application Opens Slowly
 
@@ -773,6 +825,18 @@ Verify that the following files exist in the main project folder:
 mortgage_pipeline.pkl
 model_columns.pkl
 ```
+
+---
+
+## The Processed Dataset Is Missing
+
+Verify that the following file exists in the main project folder:
+
+```text
+hmda_2023_processed.csv
+```
+
+This file is required for the Data Insights dashboard.
 
 ---
 
@@ -806,12 +870,12 @@ For a production application, feedback should be stored in:
 - MySQL
 - Firebase
 - Supabase
-- Cloud storage
+- Managed cloud storage
 - Another persistent database system
 
 ---
 
-#  Local Installation
+# Local Installation
 
 ## 1. Clone the Repository
 
@@ -851,7 +915,7 @@ python -m streamlit run app.py
 
 ---
 
-# 📁 Main Project Files
+# Main Project Files
 
 ```text
 mortgag-dashboard/
@@ -860,8 +924,10 @@ mortgag-dashboard/
 ├── README.md
 ├── USER_GUIDE.md
 ├── requirements.txt
+├── LICENSE
 ├── mortgage_pipeline.pkl
 ├── model_columns.pkl
+├── hmda_2023_processed.csv
 │
 ├── pages/
 │   ├── home.py
@@ -871,7 +937,9 @@ mortgag-dashboard/
 │   ├── simulator.py
 │   ├── advisor.py
 │   ├── model_performance.py
-│   └── model_feedback.py
+│   ├── data_insights.py
+│   ├── model_feedback.py
+│   └── about.py
 │
 ├── utils/
 │   ├── prediction.py
@@ -881,13 +949,15 @@ mortgag-dashboard/
 │   ├── session.py
 │   └── styles.py
 │
-└── components/
-    └── logo.py
+├── components/
+│   └── logo.py
+│
+└── assets/
 ```
 
 ---
 
-# 🔗 Project Links
+# Project Links
 
 ## Live Application
 
@@ -899,29 +969,32 @@ mortgag-dashboard/
 
 ---
 
-# 🎓 Academic Context
+# Academic Context
 
 NOVA Mortgage Intelligence was developed as a final Data Science capstone project.
 
 The project demonstrates the integration of:
 
-- Data preprocessing
-- Exploratory Data Analysis
-- Machine Learning
-- Model comparison
-- Hyperparameter optimization
-- Performance evaluation
-- Fairness analysis
-- Financial analytics
-- Interactive visualization
-- Web deployment
-- PDF reporting
-- Human-in-the-loop feedback
-- Controlled model retraining
+- Data preprocessing.
+- Exploratory Data Analysis.
+- Feature engineering.
+- Machine Learning.
+- Model comparison.
+- Hyperparameter optimization.
+- Performance evaluation.
+- Fairness analysis.
+- Financial analytics.
+- Interactive visualization.
+- Web deployment.
+- PDF reporting.
+- Human-in-the-loop feedback.
+- Controlled model retraining.
+- Modular software architecture.
+- Professional documentation.
 
 ---
 
-#  Author
+# Author
 
 **Sama Andrea**
 
@@ -931,7 +1004,7 @@ Final Capstone Project
 
 ---
 
-#  Final Notice
+# Final Notice
 
 NOVA Mortgage Intelligence is an academic analytical platform.
 
