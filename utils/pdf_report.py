@@ -150,38 +150,51 @@ def _humanize_key(key: str) -> str:
     return key.replace("_", " ").strip().title()
 
 
-def _decision_details(decision: Any) -> tuple[str, colors.Color, colors.Color]:
+def _decision_details(
+    decision: Any,
+) -> tuple[str, colors.Color, colors.Color]:
     """
     Return normalized decision text and matching colors.
     """
-    decision_text = _safe_text(decision, "Pending").strip().lower()
+    decision_text = (
+        _safe_text(decision, "Pending")
+        .strip()
+        .lower()
+    )
 
-    positive_values = {
-        "approved",
-        "approve",
-        "approval",
-        "accepted",
-        "eligible",
-        "1",
-        "true",
-        "yes",
-    }
+    positive_decision = (
+        decision_text in {
+            "approved",
+            "approve",
+            "approval",
+            "accepted",
+            "eligible",
+            "1",
+            "true",
+            "yes",
+        }
+        or decision_text.startswith("likely approved")
+        or decision_text.startswith("approval possible")
+    )
 
-    negative_values = {
-        "denied",
-        "declined",
-        "rejected",
-        "not approved",
-        "0",
-        "false",
-        "no",
-    }
+    negative_decision = (
+        decision_text in {
+            "denied",
+            "declined",
+            "rejected",
+            "not approved",
+            "0",
+            "false",
+            "no",
+        }
+        or "decline risk" in decision_text
+    )
 
-    if decision_text in positive_values:
-        return "APPROVED", GREEN, LIGHT_GREEN
+    if positive_decision:
+        return decision_text.upper(), GREEN, LIGHT_GREEN
 
-    if decision_text in negative_values:
-        return "DECLINED", RED, LIGHT_RED
+    if negative_decision:
+        return decision_text.upper(), RED, LIGHT_RED
 
     return decision_text.upper(), ORANGE, LIGHT_ORANGE
 
@@ -792,25 +805,46 @@ def _create_probability_bar(
 
 def _generate_recommendations(
     decision: Any,
+    prediction: Any,
     financial_values: Mapping[str, float],
     approval_probability: float,
 ) -> list[str]:
     """
     Generate practical mortgage recommendations.
+
+    The numeric final prediction is used as the primary source
+    of truth. The textual decision is used only as a fallback.
     """
     recommendations: list[str] = []
 
-    decision_text = _safe_text(decision, "").lower()
-    is_approved = decision_text in {
-        "approved",
-        "approve",
-        "approval",
-        "accepted",
-        "eligible",
-        "1",
-        "true",
-        "yes",
-    }
+    decision_text = (
+        _safe_text(decision, "")
+        .strip()
+        .lower()
+    )
+
+    try:
+        prediction_value = int(prediction)
+    except (TypeError, ValueError):
+        prediction_value = -1
+
+    if prediction_value in {0, 1}:
+        is_approved = prediction_value == 1
+    else:
+        is_approved = (
+            decision_text in {
+                "approved",
+                "approve",
+                "approval",
+                "accepted",
+                "eligible",
+                "1",
+                "true",
+                "yes",
+            }
+            or decision_text.startswith("likely approved")
+            or decision_text.startswith("approval possible")
+        )
 
     dti = financial_values["dti"]
     ltv = financial_values["ltv"]
@@ -1059,10 +1093,11 @@ def generate_mortgage_pdf(
 
     decision = _get_value(
         result_data,
+        "predicted_decision",
         "decision",
         "prediction_label",
-        "prediction",
         "status",
+        "prediction",
         default="Pending",
     )
 
@@ -1323,8 +1358,16 @@ def generate_mortgage_pdf(
 
     story.append(Spacer(1, 7 * mm))
 
+    prediction = _get_value(
+        result_data,
+        "prediction",
+        "final_prediction",
+        default=None,
+    )
+
     recommendations = _generate_recommendations(
         decision=decision,
+        prediction=prediction,
         financial_values=financial_values,
         approval_probability=approval_probability_normalized,
     )
