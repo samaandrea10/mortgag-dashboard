@@ -24,9 +24,11 @@ def show_approval() -> None:
 
     with title_column:
         st.markdown(
-            "<p class='nova-kicker'>"
-            "MORTGAGE APPLICATION ANALYSIS"
-            "</p>",
+            """
+            <p class="nova-kicker">
+                MORTGAGE APPLICATION ANALYSIS
+            </p>
+            """,
             unsafe_allow_html=True,
         )
 
@@ -73,7 +75,13 @@ def show_approval() -> None:
 
             loan_term = st.selectbox(
                 "Loan Term",
-                options=[120, 180, 240, 300, 360],
+                options=[
+                    120,
+                    180,
+                    240,
+                    300,
+                    360,
+                ],
                 index=4,
                 format_func=lambda months: (
                     f"{months // 12} years "
@@ -96,6 +104,11 @@ def show_approval() -> None:
                 max_value=200.0,
                 value=78.0,
                 step=1.0,
+                help=(
+                    "Enter the LTV value reported for the mortgage "
+                    "application. This variable is used directly by "
+                    "the trained Machine Learning model."
+                ),
             )
 
             debt_to_income_ratio = st.number_input(
@@ -197,13 +210,16 @@ def show_approval() -> None:
         return
 
     # -----------------------------------------------------
-    # Informational notice only
-    # This does not block the analysis.
+    # Informational LTV consistency notice
     # -----------------------------------------------------
 
     calculated_ltv = (
         loan_amount / property_value
     ) * 100
+
+    ltv_difference = abs(
+        calculated_ltv - loan_to_value_ratio
+    )
 
     if calculated_ltv > 100:
         st.info(
@@ -219,8 +235,16 @@ def show_approval() -> None:
             "will continue, and this may increase lending risk."
         )
 
+    if ltv_difference > 10:
+        st.info(
+            "The entered Loan-to-Value ratio differs from the "
+            "ratio calculated from the loan amount and property "
+            "value. NOVA will use the entered LTV value because "
+            "it corresponds to the model's expected input."
+        )
+
     # -----------------------------------------------------
-    # Run analysis
+    # Run mortgage analysis
     # -----------------------------------------------------
 
     try:
@@ -238,8 +262,13 @@ def show_approval() -> None:
             derived_ethnicity=derived_ethnicity,
         )
 
-        save_analysis_result(analysis_result)
-        set_page("results")
+        save_analysis_result(
+            analysis_result
+        )
+
+        set_page(
+            "results"
+        )
 
     except FileNotFoundError:
         st.error(
@@ -247,6 +276,12 @@ def show_approval() -> None:
             "`mortgage_pipeline.pkl` and "
             "`model_columns.pkl` are located in the main "
             "project folder."
+        )
+
+    except ValueError as error:
+        st.error(
+            "The entered values could not be processed. "
+            f"Technical details: {error}"
         )
 
     except Exception as error:
