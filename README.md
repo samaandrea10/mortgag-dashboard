@@ -17,12 +17,11 @@ https://mortgage-dashboard-sama.streamlit.app/
 
 ---
 
-# User Guide
+## User Guide
 
-Complete operating instructions, workflow explanations, prediction interpretation, model feedback procedures, and troubleshooting documentation are available in:
+A comprehensive user guide describing the complete workflow of the NOVA platform—including application navigation, mortgage prediction, model performance interpretation, data insights, verified outcome feedback, PDF report generation, and troubleshooting—is available below.
 
-**USER_GUIDE.md**
-
+ **[Open the NOVA User Guide](USER_GUIDE.md)**
 ---
 
 # Executive Summary
