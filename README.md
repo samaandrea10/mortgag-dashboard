@@ -2,10 +2,11 @@
 
 ### End-to-End Machine Learning Dashboard for Mortgage Approval Prediction
 
-
-[]
-[]
-[]
+[![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-Machine%20Learning-orange?logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-Deployed-red?logo=streamlit&logoColor=white)](https://streamlit.io/)
+[![Pandas](https://img.shields.io/badge/Pandas-Data%20Processing-blue?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
+[![GitHub](https://img.shields.io/badge/GitHub-Version%20Control-black?logo=github&logoColor=white)](https://github.com/)
 
 ---
 
