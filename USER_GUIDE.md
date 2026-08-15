@@ -20,11 +20,11 @@ The system enables users to:
 - View approval and decline probabilities.
 - Evaluate affordability and lending-risk indicators.
 - Review the final model's performance.
-- Examine the variables that most influence predictions.
+- Examine the variables that have relatively high importance in the model's predictions.
 - Record verified actual outcomes for controlled model monitoring.
 - Generate a downloadable PDF analysis report.
 
-> **Important:** NOVA is an academic decision-support system.
+> **Important:** NOVA is an academic decision-support system.  
 > It does not replace formal lender underwriting, legal advice, or an official credit decision.
 
 ---
@@ -224,7 +224,7 @@ The application accepts the following applicant attributes:
 
 These variables are part of the HMDA dataset and were included in the academic modeling process.
 
-They are also examined through fairness analysis to evaluate whether the model behaves differently across demographic groups.
+These variables are also examined as part of a **preliminary fairness analysis** to identify potential differences in model outcomes across demographic groups.
 
 ---
 
@@ -258,7 +258,7 @@ The exact result may vary according to the trained Machine Learning model.
 
 # Demonstration 2 — Elevated Financial Risk
 
-Use the following values to demonstrate a high-risk profile:
+Use the following values to demonstrate a profile with elevated financial-risk indicators:
 
 | Field | Example Value |
 |---|---:|
@@ -274,19 +274,21 @@ Use the following values to demonstrate a high-risk profile:
 | Race | Race Not Available |
 | Ethnicity | Hispanic or Latino |
 
-Expected result:
+Possible result:
 
 ```text
 Elevated Decline Risk
 ```
 
-This profile contains several strong risk signals:
+This profile contains several financial-risk indicators:
 
 - Very high LTV.
 - Very high DTI.
-- Extremely high payment burden relative to income.
+- High estimated payment burden relative to income.
 - High interest rate.
 - Low annual income relative to the requested loan.
+
+The exact result depends on the trained Machine Learning model and should be interpreted as a model-based prediction rather than an official lending decision.
 
 ---
 
@@ -551,6 +553,8 @@ The final model was selected after model comparison, **5-Fold Cross Validation**
 
 These results indicate strong predictive performance and excellent ability to distinguish between approved and denied mortgage applications.
 
+---
+
 ## Cross Validation
 
 A **5-Fold Cross Validation** procedure was used to evaluate model stability.
@@ -560,11 +564,15 @@ A **5-Fold Cross Validation** procedure was used to evaluate model stability.
 
 The low variation between folds indicates stable performance across different data partitions.
 
+---
+
 ## Hyperparameter Tuning
 
 Hyperparameter Tuning was performed using **RandomizedSearchCV** to efficiently evaluate multiple Random Forest configurations.
 
 The optimized model was selected as the final production model deployed within NOVA.
+
+---
 
 ## Model Comparison
 
@@ -576,9 +584,11 @@ The project compared:
 
 The **Tuned Random Forest achieved the strongest overall balance of predictive performance and was selected as the final production model deployed within NOVA.**
 
+---
+
 ## Feature Importance
 
-The Feature Importance chart highlights variables with strong predictive influence, including:
+The Feature Importance chart highlights variables that have relatively high importance in the model's predictions, including:
 
 - Interest Rate
 - Debt-to-Income Ratio
@@ -587,7 +597,9 @@ The Feature Importance chart highlights variables with strong predictive influen
 - Loan-to-Value Ratio
 - Property Value
 
-Feature Importance represents predictive contribution and does not establish causation.
+Feature Importance helps us understand which variables the Random Forest relies on more heavily when generating predictions.
+
+However, Feature Importance represents predictive contribution and does not establish causation. A feature with high importance should not be interpreted as directly causing a mortgage application to be approved or denied.
 
 ---
 
@@ -904,7 +916,7 @@ Real-world mortgage approval requires additional regulatory, legal, financial, a
 
 **Data Science Specialization**
 
-**Final Capstone Project**
+**Final  Project**
 
 ---
 
